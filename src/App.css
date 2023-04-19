@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+body {
+  background-image: linear-gradient(to right, #1971c2, #4dabf7);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  margin-top: 2rem;
+  height: 90vh;
+}
+.card {
+  margin: 6rem 0;
+  transition: all 0.3s;
+  border-radius: 1rem;
+}
+.row {
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.plan-details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.price-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.row {
+  justify-content: space-around;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.text-box {
+  border-top: 1px solid #999;
+  padding-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.price {
+  font-size: 5rem;
+  font-weight: 500;
+}
+.tag {
+  margin-top: 2rem;
+  color: #777;
+  font-weight: 500;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+button {
+  width: 14rem;
+  margin: 2rem;
+}
+
+.list-icon {
+  height: 2.4rem;
+  width: 2, 0.4rem;
 }
