@@ -1,36 +1,40 @@
-body {
-  background-image: linear-gradient(to right, #1971c2, #4dabf7);
+.App {
+ 
+  height: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  position:relative;
+ 
 }
 
-.container {
-  margin-top: 2rem;
-  height: 90vh;
-}
-.card {
-  margin: 6rem 0;
-  transition: all 0.3s;
-  border-radius: 1rem;
-}
-.row {
-  align-items: center;
-}
-
-.plan-details {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+.badge{
+  position:absolute;
+  right:0;
+  display:inline-block;
+  top:-1rem;
+  padding:5rem;
+  height:2rem;
+  width:4rem;
+  
+  
 }
 
-.price-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.card-container {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap:2rem;
+  row-gap:4rem;
+
 }
 
-.row {
-  justify-content: space-around;
+.image {
+  height: 250px;
 }
+
+
+
 
 .text-box {
   border-top: 1px solid #999;
@@ -40,26 +44,3 @@ body {
   align-items: center;
 }
 
-.price {
-  font-size: 5rem;
-  font-weight: 500;
-}
-.tag {
-  margin-top: 2rem;
-  color: #777;
-  font-weight: 500;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-}
-
-button {
-  width: 14rem;
-  margin: 2rem;
-}
-
-.list-icon {
-  height: 2.4rem;
-  width: 2, 0.4rem;
-}

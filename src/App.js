@@ -1,183 +1,105 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Badge from 'react-bootstrap/Badge';
 
 function App() {
+  const data = [
+    {
+      brand: "Apple",
+      model: "Iphone 14",
+      price:'$450',
+      image:
+        "https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/10/iphone14productshots-1-1.jpeg",
+    },
+    {
+      brand: "Samsung",
+      model: "Galaxy s23",
+      price:'$350',
+      image:
+        "https://images.samsung.com/in/smartphones/galaxy-s23-ultra/images/galaxy-s23-ultra-highlights-colors-green-back-s.jpg",
+    },
+    {
+      brand: "Vivo",
+      model: "X90",
+      price:'$249',
+      image:
+        "https://www.91-cdn.com/hub/wp-content/uploads/2023/02/Vivo-X90.png?tr=q-100",
+    },
+    {
+      brand: "Oppo",
+      model: "Reno 8 pro",
+      price:'$189',
+      image:
+        "https://s3b.cashify.in/gpro/uploads/2021/11/19114251/oppo-reno8-pro-5g-back-display.jpg",
+    },
+  ];
+  
+  const[count,setCount]=useState(0)
   return (
-    <div className="container">
-      <div className="row">
-        <GetApp />
-        <GetApp1 />
-        <GetApp2 />
+    <div className="App" >
+       <div className="badge">
+      <Badge bg="primary" className="b1">Cart {count}</Badge>
       </div>
+      <div className="card-container">
+       {
+      data.map((product,idx)=>(
+         <Cart
+         key={idx}
+         prod={product}
+         count={count}
+         setCount={setCount}
+         />
+      ))
+    }
     </div>
+    </div>
+    
   );
 }
 
 export default App;
 
-// 1st Card:
+function Cart({prod,count,setCount}) {
+  const[show,setShow]=useState(true)
 
-function GetApp() {
+
+  function addToCart(){
+    setShow(!show)
+    setCount(count+1)
+  }
+  function removeCart(){
+    setShow(!show)
+    setCount(count-1)
+  }
+
+ 
+
   return (
-    <div className="card col-md-3">
-      <div className="price-box">
-        <p className="tag">Free</p>
-        <p>
-          <span className="price">$0</span>/month
-        </p>
-      </div>
-      <div className="text-box">
-        <ul className="plan-details">
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Single User</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">5GB Storage</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Unlimited Public Projects</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Community Access</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="close-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Unlimited Private Projects</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="close-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Dedicated Phone Support</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="close-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Free Subdomain</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="close-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Monthly Status Reports</span>
-          </li>
-        </ul>
-        <button type="button" class="btn btn-primary">
-          BUTTON
-        </button>
-      </div>
-    </div>
-  );
-}
+        <div>
+      <Card style={{ width: "18rem" }}>
+        <Card.Img variant="top" src={prod.image} className="image" />
+        <Card.Body>
+          <Card.Title><strong>{prod.model}</strong></Card.Title>
+          <Card.Text>
+         <strong>Brand:</strong>{prod.brand}
+          </Card.Text>
+          <Card.Text>
+        <strong>Price:</strong>{prod.price}
+          </Card.Text>
+         {
+          show?
+           <Button variant="primary"
+           onClick={addToCart}>Add to Cart</Button>
 
-// 2nd card:
-
-function GetApp1() {
-  return (
-    <div className="card col-md-3">
-      <div className="price-box">
-        <p className="tag">PLUS</p>
-        <p>
-          <span className="price">$9</span>/month
-        </p>
+          :<Button variant="danger"
+          onClick={removeCart}>Remove from cart</Button>
+         }
+        </Card.Body>
+      </Card>
       </div>
-      <div className="text-box">
-        <ul className="plan-details">
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">
-              <strong>5 Users</strong>
-            </span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">50GB Storage</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Unlimited Public Projects</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Community Access</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Unlimited Private Projects</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Dedicated Phone Support</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Free Subdomain</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="close-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Monthly Status Reports</span>
-          </li>
-        </ul>
-        <button type="button" class="btn btn-primary">
-          BUTTON
-        </button>
-      </div>
-    </div>
-  );
-}
-
-// 3rd Card
-
-function GetApp2() {
-  return (
-    <div className="card col-md-3">
-      <div className="price-box">
-        <p className="tag">PRO</p>
-        <p>
-          <span className="price">$49</span>/month
-        </p>
-      </div>
-      <div className="text-box">
-        <ul className="plan-details">
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">
-              <strong>Unlimited Users</strong>
-            </span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">150GB Storage</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Unlimited Public Projects</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Community Access</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Unlimited Private Projects</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Dedicated Phone Support</span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">
-              <strong>Unlimited</strong> Free Subdomains
-            </span>
-          </li>
-          <li className="list-itmes">
-            <ion-icon name="checkmark-outline" className="list-icon"></ion-icon>
-            <span className="list-text">Monthly Status Reports</span>
-          </li>
-        </ul>
-        <button type="button" class="btn btn-primary">
-          BUTTON
-        </button>
-      </div>
-    </div>
+    
   );
 }
